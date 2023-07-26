@@ -1,7 +1,7 @@
+import fastify from 'fastify';
 import fastifyStatic from '@fastify/static';
-import fastify from 'fastify'
-import path from 'path'
-import { fileURLToPath } from 'url'
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const server = fastify();
 const __filename = fileURLToPath(import.meta.url);
@@ -27,8 +27,9 @@ const questions = [
 ];
 
 server.register(fastifyStatic, {
-   root: path.join(__dirname, '../client')
- })
+   root: path.join(__dirname, '../client'),
+   prefix: '/'
+});
 
 server.get('/questions', (request, reply) => {
    return reply.send(questions);
@@ -55,9 +56,8 @@ server.post('/check', (request, reply) => {
 
 server.listen({ port: 5556 })
    .then(() => {
-      console.log('Server started')
+      console.log('Server started');
    })
    .catch((error) => {
-      console.log('Error', error)
+      console.log('Error', error);
    });
-
