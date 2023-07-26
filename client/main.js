@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             answerInputs.forEach(input => {
                input.addEventListener('change', () => {
                   const allAnswersSelected = Array.from(answerInputs).every(input => input.checked);
-                  checkButton.disabled = !allAnswersSelected;
+                  checkButton.disabled = allAnswersSelected;
                });
             });
 
